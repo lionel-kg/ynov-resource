@@ -1,6 +1,7 @@
 ## Sommaire :
-- [Création des images] (#création-des-images)
-- [Finalités] (#finalités)
+- [Création des images](#création-des-images)
+- [Création du registre](#création-du-registre)
+- [Finalités](#finalités)
 
 
 ## Création des images 
