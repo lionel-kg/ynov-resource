@@ -1,6 +1,6 @@
 ## Sommaire :
 - [Création des images] (#création-des-images)
-- 
+- [Finalités] (#finalités)
 
 
 ## Création des images 
