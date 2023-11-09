@@ -3,7 +3,7 @@
 - 
 
 
-# 1. Création des images 
+## Création des images 
 
 ![1- build des images](https://github.com/lionel-kg/ynov-resource/assets/56402311/ff8ca3b1-baf1-4bc0-b55a-d3ecc3331095)
 
@@ -12,7 +12,7 @@
 Dans un premier temps nous avons créer les Dockerfile de chaques fonctionnalités et puis nous avons créer le fichier docker-compose-build.yaml à la racine du projet pour builder nos images.
 
 
-# 2. Création du registre
+## Création du registre
 
 ![3- création registry](https://github.com/lionel-kg/ynov-resource/assets/56402311/6226a22b-6060-4dd0-a010-faae794da777)
 
@@ -33,7 +33,7 @@ Nous avons dû taguer chacune de nos images pour les push sur notre registre.
 
 Comme vous pouvez le voir, les images apparaissent bien dans le registre.
 
-# 3. Finalités
+## Finalités
 
 ![final docker compose running](https://github.com/lionel-kg/ynov-resource/assets/56402311/c7eb1ded-4135-4975-a00f-4228c600b207)
 
