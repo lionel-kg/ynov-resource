@@ -1,0 +1,86 @@
+version: '3'
+
+services:
+  db:
+    image: localhost:5003/postgres:15-alpine
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./healthchecks:/healthchecks
+    healthcheck:
+      test: /healthchecks/postgres.sh
+      interval: 5s
+    networks:
+      - back-tier
+    environment:
+      POSTGRES_PASSWORD: test1234
+
+  redis:
+    image: redis:alpine
+    volumes:
+      - ./healthchecks:/healthchecks
+    healthcheck:
+      test: /healthchecks/redis.sh
+      interval: 5s
+    networks:
+      - back-tier
+
+  worker:
+    image:  localhost:5003/worker
+    depends_on:
+      redis:
+        condition: service_healthy
+      db:
+        condition: service_healthy
+    networks:
+      - back-tier
+
+  vote:
+    image:  localhost:5003/vote
+    volumes:
+      - ./vote:/usr/local/app
+    ports:
+      - "5002:80"
+    networks:
+      - front-tier
+      - back-tier
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    profiles:
+      - seed
+
+  seed-data:
+    image:  localhost:5003/seed-data
+    depends_on:
+      vote:
+        condition: service_healthy
+    restart: "no"
+    networks:
+      - front-tier
+    profiles:
+      - seed
+
+  result:
+    image:  localhost:5003/result
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./result:/usr/local/app
+    ports:
+      - "5001:80"
+      - "127.0.0.1:9229:9229"
+    networks:
+      - back-tier
+      - front-tier
+
+networks:
+  back-tier:
+    driver: bridge
+  front-tier:
+    driver: bridge
+volumes:
+  db-data:
