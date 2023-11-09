@@ -1,5 +1,6 @@
 ## Sommaire :
-  - [Création des images] (#creation-des-images)
+- [Création des images] (#création-des-images)
+- 
 
 
 # 1. Création des images 
