@@ -48,3 +48,5 @@ En accédant au localhost:5002 vous devriez avoir le vote chien / chat.
 
 Finalement, en accédant au localhost:5001 vous devriez voir les résultats des votes. Cependant étant donné qu'il y a une erreur avec la connexion à la DB, nous n'avons pas les résultats en temps réel.
 
+![image2](https://github.com/lionel-kg/ynov-resource/assets/56402311/184bc473-879e-4b99-a887-07f695292a2a)
+
